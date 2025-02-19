@@ -6,6 +6,8 @@ __author__ = "Andrew Woods"
 import argparse
 import os
 import sys
+import string
+import random
 
 
 def main():
@@ -68,13 +70,28 @@ class PasswordGenerator:
     length = 16
     withNumbers = False
     withSymbols = False
+    values = ""
 
     def __init__(self, withNumbers, withSymbols):
         self.withNumbers = withNumbers
         self.withSymbols = withSymbols
 
     def get(self):
-        return "asdf1234qwer4321"
+        self.values += string.ascii_letters
+        if self.withNumbers == True:
+            self.values += "0123456789"
+        if self.withSymbols == True:
+            self.values += "!@#$%^&*(),./<>?"
+
+        output = ""
+        i = 0
+        while i < self.length:
+            randomIndex = random.randint(0, len(self.values) - 1)
+            letter = self.values[randomIndex]
+            output += letter
+            i += 1
+
+        return output
 
 
 if not __package__:
