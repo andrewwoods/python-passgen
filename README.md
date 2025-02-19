@@ -1,14 +1,12 @@
 
-# Project Name 
+# Python PassGen
 
-__The tagline for your project__
+__CLI Password Generator written in Python__
 
-This is where you write a paragraph or so, describing your project to the
-person reading it, so they know what your project is all about. You could skip
-this part.  However, after all the hard work you put into creating your
-project, it would be a shame if nobody ever used it, because you didn't take
-the time to explain it to them.  You don't have to write a lot - just enough to
-get them interested.
+Python Passgen is a simple security tool to help you create a more secure
+password. This is modeled after the [Password
+Generator](https://1password.com/password-generator) created by 1Password. The
+value of this tool, is that it runs locally in your terminal.
 
 
 
@@ -21,10 +19,9 @@ The current version is 0.0.0. This project uses [semantic versioning](http://sem
 
 Here's a few things you can do:
 
-* Feature 1
-* Feature 2
-* Feature 3
-* Feature 4
+* Generate Random Password between minimum and maxmimum length characters
+* Length adjustable via options
+* Optional Toggle of Numbers and Symbols
 
 
 ## Installation
