@@ -11,6 +11,9 @@ import random
 
 
 def main():
+    DEFAULT_PASSWORD_LENGTH = 16
+    DEFAULT_PIN_LENGTH = 6
+
     parser = argparse.ArgumentParser(
         prog="passgen.py",
         description="Generate a secure random value for your authentication system",
@@ -24,13 +27,13 @@ def main():
     )
     parser.add_argument(
         "passtype",
-        choices=["random"],
-        help="The type of generated value can be: random",
+        choices=["random", "pin"],
+        help="The type of generated value can be: random, or pin",
     )
     parser.add_argument(
         "--length",
         type=int,
-        default=16,
+        default=DEFAULT_PASSWORD_LENGTH,
         help="The quantity of characters in your password",
     )
     parser.add_argument(
@@ -67,6 +70,12 @@ def main():
         if args.passtype == "random":
             gen = PasswordGenerator(args.numbers, args.symbols, args.length)
             result = gen.get()
+        elif args.passtype == "pin":
+            if args.length == DEFAULT_PASSWORD_LENGTH:
+                args.length = DEFAULT_PIN_LENGTH
+
+            gen = PinGenerator(args.length)
+            result = gen.get()
         else:
             print("The type you've chosen is not valid")
 
@@ -90,6 +99,27 @@ class PasswordGenerator:
             self.values += "0123456789"
         if self.withSymbols == True:
             self.values += "!@#$%^&*(),./<>?"
+
+        output = ""
+        i = 0
+        while i < self.length:
+            randomIndex = random.randint(0, len(self.values) - 1)
+            letter = self.values[randomIndex]
+            output += letter
+            i += 1
+
+        return output
+
+
+class PinGenerator:
+    length = 6
+    values = ""
+
+    def __init__(self, length):
+        self.length = length
+
+    def get(self):
+        self.values += "0123456789"
 
         output = ""
         i = 0
