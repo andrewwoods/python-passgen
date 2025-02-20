@@ -28,6 +28,12 @@ def main():
         help="The type of generated value can be: random",
     )
     parser.add_argument(
+        "--length",
+        type=int,
+        default=16,
+        help="The quantity of characters in your password",
+    )
+    parser.add_argument(
         "--numbers",
         action="store_true",
         help="Include numbers in your generated password",
@@ -55,10 +61,11 @@ def main():
             print(f"Password Type: {args.passtype}")
             print(f"Has Numbers: {args.numbers}")
             print(f"Has Symbols: {args.symbols}")
+            print(f"Length: {args.length}")
 
         result = ""
         if args.passtype == "random":
-            gen = PasswordGenerator(args.numbers, args.symbols)
+            gen = PasswordGenerator(args.numbers, args.symbols, args.length)
             result = gen.get()
         else:
             print("The type you've chosen is not valid")
@@ -72,9 +79,10 @@ class PasswordGenerator:
     withSymbols = False
     values = ""
 
-    def __init__(self, withNumbers, withSymbols):
+    def __init__(self, withNumbers, withSymbols, length):
         self.withNumbers = withNumbers
         self.withSymbols = withSymbols
+        self.length = length
 
     def get(self):
         self.values += string.ascii_letters
