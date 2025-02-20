@@ -18,68 +18,62 @@ def main():
         prog="passgen.py",
         description="Generate a secure random value for your authentication system",
         epilog="by Andrew Woods",
-        usage="bin/passgen.py <passtype>",
     )
+
     parser.add_argument(
         "--version",
         action="version",
         version="%(prog)s {version}".format(version=__version__),
     )
-    parser.add_argument(
-        "passtype",
-        choices=["random", "pin"],
-        help="The type of generated value can be: random, or pin",
-    )
-    parser.add_argument(
+
+    subparsers = parser.add_subparsers(title="command")
+
+    pin_parser = subparsers.add_parser("pin")
+    pin_parser.set_defaults(which="pin")
+    pin_parser.add_argument(
         "--length",
         type=int,
-        default=DEFAULT_PASSWORD_LENGTH,
+        default=DEFAULT_PIN_LENGTH,
+        action="store",
         help="The quantity of characters in your password",
     )
-    parser.add_argument(
+
+    random_parser = subparsers.add_parser("random")
+    random_parser.set_defaults(which="random")
+    random_parser.add_argument(
         "--numbers",
         action="store_true",
         help="Include numbers in your generated password",
     )
-    parser.add_argument(
+    random_parser.add_argument(
         "--symbols",
         action="store_true",
         help="Include symbols in your generated password",
     )
-    parser.add_argument(
-        "--debug",
-        action="store_true",
-        help="Show debug information",
+    random_parser.add_argument(
+        "--length",
+        type=int,
+        default=DEFAULT_PASSWORD_LENGTH,
+        action="store",
+        help="Quantity of characters in your password",
     )
-
     args = parser.parse_args()
 
-    if len(vars(args)) == None:
-        parser.print_help()
-    else:
-
-        if args.debug == True:
-            print("Your code goes here")
-            print("-------------------")
-            print(f"Password Type: {args.passtype}")
-            print(f"Has Numbers: {args.numbers}")
-            print(f"Has Symbols: {args.symbols}")
-            print(f"Length: {args.length}")
-
-        result = ""
-        if args.passtype == "random":
+    result = ""
+    if hasattr(args, "which"):
+        if args.which == "random":
             gen = PasswordGenerator(args.numbers, args.symbols, args.length)
             result = gen.get()
-        elif args.passtype == "pin":
+        elif args.which == "pin":
             if args.length == DEFAULT_PASSWORD_LENGTH:
                 args.length = DEFAULT_PIN_LENGTH
 
             gen = PinGenerator(args.length)
             result = gen.get()
-        else:
-            print("The type you've chosen is not valid")
+    else:
+        parser.print_help()
 
-        print(f"\n{result}\n")
+    print(f"\n{result}\n")
 
 
 class PasswordGenerator:

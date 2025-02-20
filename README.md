@@ -20,8 +20,9 @@ The current version is 0.1.1. This project uses [semantic versioning](http://sem
 Here's a few things you can do:
 
 * Generate Random Password between minimum and maxmimum length characters
+* Random Pin Number generation
 * Length adjustable via options
-* Optional Toggle of Numbers and Symbols
+* Optional Toggle of Numbers and Symbols for random password
 
 
 ## Installation
