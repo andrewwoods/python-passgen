@@ -12,7 +12,7 @@ value of this tool, is that it runs locally in your terminal.
 
 ## Version
 
-The current version is 0.1.1. This project uses [semantic versioning](http://semver.org).
+The current version is 0.2.0. This project uses [semantic versioning](http://semver.org).
 
 
 ## Features
