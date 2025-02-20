@@ -27,14 +27,10 @@ Here's a few things you can do:
 
 ## Installation
 
-* Create needed top level directories that fit your project (e.g. _bin_, _doc_, _public_, _src_, _tests_)
-* [Create a Git Ignore](https://www.gitignore.io/) file
-    - Add the phpdocs directory to your .gitignore file
-    - Add Editor-specific files to your .gitignore ( .swp for Vim, .idea for PHPStorm, etc. )
-* Select an [Open Source License](http://opensource.org/licenses) and copy it to LICENSE.txt
-* Update [CONTRIBUTING.md](docs/CONTRIBUTING.md) to match your project needs
-* Create a .env file to manage any settings you need.
-
+1. Download or clone this repo into your $HOME directory
+1. Add this projects `bin` directory to your $PATH
+1. Open a new terminal window to get the updated $PATH
+1. Run `passgen.py`
 
 ## Ideas for sections/pages
 
@@ -55,15 +51,6 @@ Here's a few things you can do:
 * [Git Ignore Generator](https://www.gitignore.io/)
 * [Open Source Licenses](http://opensource.org/licenses/GPL-3.0)
 
-### PHP
-
-
-* [Supported Versions](https://www.php.net/supported-versions.php)
-* [PHPDocumentor Docs](https://docs.phpdoc.org/)
-* [PHPStan User Guide](https://phpstan.org/user-guide/getting-started)
-* [Composer Docs](https://getcomposer.org/doc/)
-* [XDebug](https://xdebug.org/)
-
 ### Python
 
 * [Python Docs Homepage](https://www.python.org/doc/)
@@ -73,6 +60,5 @@ Here's a few things you can do:
 
 ## Credits and Acknowledgments
 
-* Project Creator:  [Firstname Lastname](https://example.com)
-* Current Maintainer: [Firstname Lastname](https://example.com)
+* Project Creator:  [Andrew Woods](https://andrewwoods.net)
 
